@@ -1,4 +1,4 @@
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "/api/v1" : "http://localhost:8000/api/v1")).replace(/\\/$/, "");
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "/api/v1" : "http://localhost:8000/api/v1")).replace(/\/$/, "");
 
 async function request(path, options = {}) {
   const token = localStorage.getItem("access_token");
@@ -17,7 +17,9 @@ async function request(path, options = {}) {
     : await response.text();
 
   if (!response.ok) {
-    const message = typeof data === "object" && data?.detail ? data.detail : `API request failed (${response.status})`;
+    const message = typeof data === "object" && data?.detail
+      ? data.detail
+      : `API request failed (${response.status})`;
     throw new Error(message);
   }
 
@@ -37,9 +39,12 @@ export const api = {
   rosters: () => request("/erp/rosters"),
   attendance: () => request("/erp/attendance"),
   payroll: (month) => request(`/erp/payroll${month ? `?month=${encodeURIComponent(month)}` : ""}`),
-  invoices: () => request("/invoices"),
-  generateInvoice: (payload) => request("/billing/generate-invoice", {
+  createInvoice: (payload) => request("/accounts/invoices", {
     method: "POST",
+    body: JSON.stringify(payload),
+  }),
+  updateInvoice: (invoiceId, payload) => request(`/accounts/invoices/${invoiceId}`, {
+    method: "PATCH",
     body: JSON.stringify(payload),
   }),
 };
