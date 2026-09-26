@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import {createRoot} from "react-dom/client";
-import {LayoutDashboard,Building2,Users,CalendarCheck,ReceiptText,WalletCards,BarChart3,Settings,Search,Bell,ChevronDown,Plus,ArrowUpRight,Clock3,ShieldCheck,MapPin,FileText,Menu,X} from "lucide-react";
+import {LayoutDashboard,Building2,Users,CalendarCheck,ReceiptText,WalletCards,BarChart3,Settings,Search,Bell,ChevronDown,Plus,ArrowUpRight,Clock3,ShieldCheck,MapPin,FileText,Menu,X,MoreHorizontal} from "lucide-react";
 import "./styles.css";
 const nav=[["Overview",LayoutDashboard],["Clients",Building2],["Employees",Users],["Sites",MapPin],["Attendance",CalendarCheck],["Invoices",ReceiptText],["Payroll",WalletCards],["Reports",BarChart3]];
 const activity=[["Rajesh Kumar","Main Gate • Day Shift","Present","08:12 AM"],["Amit Singh","Warehouse • Night Shift","Present","08:05 AM"],["Vikram Yadav","HQ • Day Shift","Late","09:17 AM"],["Ajay Rawat","Plant 02 • Night Shift","Absent","—"]];
